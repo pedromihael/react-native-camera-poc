@@ -53,8 +53,8 @@ export const Camera = ({navigation}) => {
         onPress={takePicture}
       />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={takePicture} style={styles.capture}>
-          <Text style={styles.buttonText}> SNAP </Text>
+        <TouchableOpacity style={styles.captureWrapper}>
+          <TouchableOpacity onPress={takePicture} style={styles.capture} />
         </TouchableOpacity>
       </View>
     </View>
@@ -86,12 +86,21 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
+    backgroundColor: 'red',
+    borderRadius: 100,
     padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
+    borderWidth: 5,
+    borderColor: 'black',
+  },
+  captureWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    flex: 0,
+    backgroundColor: 'red',
+    borderRadius: 100,
+    padding: 10,
+    margin: 30,
   },
   buttonText: {
     fontSize: 14,
