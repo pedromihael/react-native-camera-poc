@@ -1,10 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {View, Alert, TouchableOpacity} from 'react-native';
-import {RNCamera} from 'react-native-camera';
+import {Alert} from 'react-native';
 import {useCallback} from 'react/cjs/react.development';
+import {RNCamera} from 'react-native-camera';
 
-import styles, {Container} from './styles';
+import {
+  Container,
+  ButtonContainer,
+  CaptureWrapper,
+  CaptureButton,
+  CameraView,
+} from './styles';
 
 let camera = null;
 
@@ -36,7 +42,7 @@ export const Camera = ({navigation}) => {
 
   return (
     <Container>
-      <RNCamera
+      <CameraView
         captureAudio={false}
         ref={ref => {
           camera = ref;
@@ -50,15 +56,13 @@ export const Camera = ({navigation}) => {
           buttonPositive: 'Ok',
           buttonNegative: 'Cancel',
         }}
-        activeOpacity={1}
-        style={styles.preview}
         onPress={takePicture}
       />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.captureWrapper}>
-          <TouchableOpacity onPress={takePicture} style={styles.capture} />
-        </TouchableOpacity>
-      </View>
+      <ButtonContainer>
+        <CaptureWrapper>
+          <CaptureButton onPress={takePicture} />
+        </CaptureWrapper>
+      </ButtonContainer>
     </Container>
   );
 };

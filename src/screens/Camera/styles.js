@@ -1,43 +1,36 @@
-import {StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
-
-const styles = StyleSheet.create({
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: 'red',
-    borderRadius: 100,
-    padding: 15,
-    borderWidth: 5,
-    borderColor: 'black',
-  },
-  captureWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex',
-    flex: 0,
-    backgroundColor: 'red',
-    borderRadius: 100,
-    padding: 10,
-    margin: 30,
-  },
-  buttonText: {
-    fontSize: 14,
-  },
-});
-
-export default styles;
+import {RNCamera} from 'react-native-camera';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: black;
+`;
+
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const CaptureWrapper = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: red;
+  border-radius: 100px;
+  padding: 10px;
+  margin: 30px;
+`;
+
+export const CaptureButton = styled.TouchableOpacity`
+  background-color: red;
+  border-radius: 100px;
+  padding: 15px;
+  border-width: 5px;
+  border-color: black;
+`;
+
+export const CameraView = styled(RNCamera)`
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
 `;
