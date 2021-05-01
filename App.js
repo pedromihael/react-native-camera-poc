@@ -2,8 +2,8 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Home} from './src/components/Home';
-import {Camera} from './src/components/Camera';
+import {PreCapture} from './src/screens/PreCapture';
+import {Camera} from './src/screens/Camera';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -11,8 +11,8 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" headerMode="none">
-        <Stack.Screen name="Home" component={Home} />
+      <Stack.Navigator initialRouteName="PreCapture" headerMode="none">
+        <Stack.Screen name="PreCapture" component={PreCapture} />
         <Stack.Screen name="Camera" component={Camera} />
       </Stack.Navigator>
     </NavigationContainer>

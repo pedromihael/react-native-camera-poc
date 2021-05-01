@@ -1,8 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {StyleSheet, View, Alert, TouchableOpacity, Text} from 'react-native';
+import {View, Alert, TouchableOpacity} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {useCallback} from 'react/cjs/react.development';
+
+import styles, {Container} from './styles';
 
 let camera = null;
 
@@ -22,7 +24,7 @@ export const Camera = ({navigation}) => {
 
       try {
         const data = await camera.takePictureAsync(options);
-        Alert.alert('Success', JSON.stringify(data));
+        Alert.alert('Success!');
       } catch (err) {
         Alert.alert('Error', 'Failed to take picture: ' + (err.message || err));
         return;
@@ -33,7 +35,7 @@ export const Camera = ({navigation}) => {
   }, [takingPic]);
 
   return (
-    <View style={styles.container}>
+    <Container>
       <RNCamera
         captureAudio={false}
         ref={ref => {
@@ -57,52 +59,6 @@ export const Camera = ({navigation}) => {
           <TouchableOpacity onPress={takePicture} style={styles.capture} />
         </TouchableOpacity>
       </View>
-    </View>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  btnAlignment: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: 'red',
-    borderRadius: 100,
-    padding: 15,
-    borderWidth: 5,
-    borderColor: 'black',
-  },
-  captureWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex',
-    flex: 0,
-    backgroundColor: 'red',
-    borderRadius: 100,
-    padding: 10,
-    margin: 30,
-  },
-  buttonText: {
-    fontSize: 14,
-  },
-});
